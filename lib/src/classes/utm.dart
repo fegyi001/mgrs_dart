@@ -16,4 +16,9 @@ class UTM {
         zoneLetter = zoneLetter,
         zoneNumber = zoneNumber,
         accuracy = accuracy;
+
+  @override
+  String toString() {
+    return 'Easting: $easting, northing: $northing, zoneLetter: $zoneLetter, zoneNumber: $zoneNumber, accuracy: $accuracy';
+  }
 }

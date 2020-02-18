@@ -2,11 +2,11 @@
 
 Utility for converting between WGS84 lat/lng and MGRS coordinates (Dart version of [proj4js/mgrs](https://github.com/proj4js/mgrs)).
 
-Has 2 methods
+Has 3 methods
 
-- forward, takes an array of `[lon,lat]` and optional accuracy and returns an mgrs string
-<!-- - inverse, takes an mgrs string and returns a bbox. -->
 - toPoint, takes an mgrs string, returns an array of `[lon,lat]`
+- forward, takes an array of `[lon,lat]` and optional accuracy and returns an mgrs string
+- inverse, takes an mgrs string and returns a bbox.
 
 ```dart
   import 'package:mgrs_dart/mgrs_dart.dart';
@@ -16,10 +16,16 @@ Has 2 methods
     String mgrsString = '11SPA7234911844';
     int accuracy = 5;
 
+    // toPoint()
     var calculatedPoint = Mgrs.toPoint(mgrsString);
-    print('Mgrs.toPoint($mgrsString) = $calculatedPoint');
+    print("Mgrs.toPoint('$mgrsString') = $calculatedPoint;");
 
+    // forward()
     var calculatedMgrsString = Mgrs.forward(point, accuracy);
-    print('Mgrs.forward($point, $accuracy) = $calculatedMgrsString');
+    print("Mgrs.forward($point, $accuracy) = '$calculatedMgrsString';");
+
+    // inverse()
+    var calculatedBox = Mgrs.inverse(mgrsString);
+    print("Mgrs.inverse('$mgrsString') = $calculatedBox;");
   }
 ```

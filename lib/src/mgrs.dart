@@ -66,16 +66,16 @@ class Mgrs {
   ///    (longitude) and top (latitude) values in WGS84, representing the
   ///    bounding box for the provided MGRS reference.
   ///
-  // static List<double> inverse(String mgrs) {
-  //   var bbox = UTMtoLL(decode(mgrs.toUpperCase()));
-  //   if (bbox is LonLat) {
-  //     return [bbox.lon, bbox.lat, bbox.lon, bbox.lat];
-  //   } else if (bbox is BBox) {
-  //     return [bbox.left, bbox.bottom, bbox.right, bbox.top];
-  //   } else {
-  //     throw Exception('Neither bbox, nor lonlat');
-  //   }
-  // }
+  static List<double> inverse(String mgrs) {
+    var bbox = UTMtoLL(decode(mgrs.toUpperCase()));
+    if (bbox is LonLat) {
+      return [bbox.lon, bbox.lat, bbox.lon, bbox.lat];
+    } else if (bbox is BBox) {
+      return [bbox.left, bbox.bottom, bbox.right, bbox.top];
+    } else {
+      throw Exception('Neither bbox, nor lonlat');
+    }
+  }
 
   ///
   /// Convert MGRS to lat/lon.
@@ -515,7 +515,7 @@ class Mgrs {
           northing: utm.northing + utm.accuracy,
           zoneLetter: utm.zoneLetter,
           zoneNumber: utm.zoneNumber,
-          accuracy: utm.accuracy,
+          accuracy: null,
         ),
       );
       return BBox(

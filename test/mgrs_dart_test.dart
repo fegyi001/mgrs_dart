@@ -11,15 +11,27 @@ void main() {
       mgrsString = '11SPA7234911844';
     });
 
-    test('Mgrs to LonLat (decode)', () {
+    test('toPoint(): MGRS to LonLat', () {
       var calculatedPoint = Mgrs.toPoint(mgrsString);
       expect(calculatedPoint[0], point[0]);
       expect(calculatedPoint[1], point[1]);
     });
 
-    test('LonLat to MGRS (encode)', () {
+    test('forward(): LonLat to MGRS', () {
       var calculatedMgrsString = Mgrs.forward(point, 5);
       expect(calculatedMgrsString, mgrsString);
+    });
+
+    test('inverse(): MGRS to BBOX ', () {
+      var calculatedBox = Mgrs.inverse(mgrsString);
+      expect(
+          calculatedBox.toString(),
+          [
+            -115.08209766323476,
+            36.236123461597515,
+            -115.08208632067898,
+            36.23613229376363
+          ].toString());
     });
   });
 }
