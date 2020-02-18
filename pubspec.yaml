@@ -1,8 +1,7 @@
 name: mgrs_dart
 description: Utility for converting between WGS84 lat/lng and MGRS coordinates (Dart version of proj4js/mgrs).
 version: 0.0.1
-author: Gergely Padányi-Gulyás
-homepage:
+homepage: https://github.com/fegyi001/mgrs_dart
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
