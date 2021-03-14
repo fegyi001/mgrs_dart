@@ -105,7 +105,7 @@ class Mgrs {
   ///      100 m, 2 for 1 km, 1 for 10 km or 0 for 100 km). Optional, default is 5.
   /// @return {string} the MGRS string for the given location and accuracy.
   ///
-  static String forward(List<double> ll, int accuracy) {
+  static String forward(List<double> ll, int? accuracy) {
     accuracy ??= 5;
     if (ll.length != 2) {
       throw Exception(
@@ -136,7 +136,7 @@ class Mgrs {
   /// @param {number} accuracy Accuracy in digits (0-5).
   /// @return {string} MGRS string for the given UTM location.
   ///
-  static String encode(UTM utm, accuracy) {
+  static String encode(UTM utm, int accuracy) {
     // prepend with leading zeroes
     var seasting = '00000${utm.easting.truncate()}';
     var snorthing = '00000${utm.northing.truncate()}';
@@ -398,12 +398,11 @@ class Mgrs {
       const minLatitude = -80;
       var index = ((latitude - minLatitude) / bandHeight).floor();
       return bandLetters[index];
-    } else if (latitude > 84 || latitude < -80) {
+    } else /* if (latitude > 84 || latitude < -80) */ {
       //This is here as an error flag to show that the Latitude is
       //outside MGRS limits
       return 'Z';
     }
-    return null;
   }
 
   ///
@@ -511,8 +510,8 @@ class Mgrs {
     if (utm.accuracy != null) {
       var topRight = UTMtoLL(
         UTM(
-          easting: utm.easting + utm.accuracy,
-          northing: utm.northing + utm.accuracy,
+          easting: utm.easting + utm.accuracy!,
+          northing: utm.northing + utm.accuracy!,
           zoneLetter: utm.zoneLetter,
           zoneNumber: utm.zoneNumber,
           accuracy: null,
@@ -587,14 +586,13 @@ class Mgrs {
     var sep = (remainder / 2).truncate();
     var sepEasting = 0.0;
     var sepNorthing = 0.0;
-    var accuracyBonus;
-    String sepEastingString;
-    String sepNorthingString;
+    int? accuracyBonus;
+
     if (sep > 0) {
       accuracyBonus = (100000 / math.pow(10, sep)).round();
-      sepEastingString = mgrsString.substring(i, i + sep);
+      var sepEastingString = mgrsString.substring(i, i + sep);
       sepEasting = double.parse(sepEastingString) * accuracyBonus;
-      sepNorthingString = mgrsString.substring(i + sep);
+      var sepNorthingString = mgrsString.substring(i + sep);
       sepNorthing = double.parse(sepNorthingString) * accuracyBonus;
     }
     var easting = sepEasting + east100k;
