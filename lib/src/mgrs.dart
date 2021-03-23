@@ -533,7 +533,7 @@ class Mgrs {
   ///     zoneNumber and accuracy (in meters) properties.
   ///
   static UTM decode(String mgrsString) {
-    if (mgrsString == null || mgrsString.isEmpty) {
+    if (mgrsString.isEmpty) {
       throw Exception('MGRSPoint coverting from nothing');
     }
     //remove any spaces in MGRS String
@@ -566,7 +566,7 @@ class Mgrs {
         zoneLetter == 'I' ||
         zoneLetter == 'O') {
       throw Exception(
-          'MGRSPoint zone letter ${zoneLetter} not handled: ${mgrsString}');
+          'MGRSPoint zone letter $zoneLetter not handled: $mgrsString');
     }
     hunK = mgrsString.substring(i, i += 2);
     var set = get100kSetForZone(zoneNumber);
@@ -581,7 +581,7 @@ class Mgrs {
     var remainder = length - i;
     if (remainder % 2 != 0) {
       throw Exception(
-          'MGRSPoint has to have an even number of digits after the zone letter and two 100km letters - front half for easting meters, second half for northing meters ${mgrsString}');
+          'MGRSPoint has to have an even number of digits after the zone letter and two 100km letters - front half for easting meters, second half for northing meters $mgrsString');
     }
     var sep = (remainder / 2).truncate();
     var sepEasting = 0.0;

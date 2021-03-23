@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.0] - 2021-03-23
+## [2.0.0] - 2021-03-23
 
 * Stable null safety release.
 
