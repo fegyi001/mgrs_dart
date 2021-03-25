@@ -4,8 +4,12 @@ class BBox {
   double right;
   double left;
 
-  BBox({double top, double bottom, double right, double left})
-      : top = top,
+  BBox({
+    required double top,
+    required double bottom,
+    required double right,
+    required double left,
+  })   : top = top,
         bottom = bottom,
         right = right,
         left = left;

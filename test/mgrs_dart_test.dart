@@ -3,8 +3,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('MGRS test', () {
-    List<double> point;
-    String mgrsString;
+    late List<double> point;
+    late String mgrsString;
 
     setUp(() {
       point = [-115.08209766323476, 36.236123461597515];

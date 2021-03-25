@@ -3,14 +3,14 @@ class UTM {
   double northing;
   String zoneLetter;
   int zoneNumber;
-  int accuracy;
+  int? accuracy;
 
   UTM(
-      {double easting,
-      double northing,
-      String zoneLetter,
-      int zoneNumber,
-      int accuracy})
+      {required double easting,
+      required double northing,
+      required String zoneLetter,
+      required int zoneNumber,
+      int? accuracy})
       : easting = easting,
         northing = northing,
         zoneLetter = zoneLetter,

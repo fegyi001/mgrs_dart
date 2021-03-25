@@ -2,7 +2,9 @@ class LonLat {
   double lon;
   double lat;
 
-  LonLat({double lon, double lat})
-      : lon = lon,
+  LonLat({
+    required double lon,
+    required double lat,
+  })   : lon = lon,
         lat = lat;
 }
