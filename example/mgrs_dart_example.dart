@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:mgrs_dart/mgrs_dart.dart';
 
 void main() {

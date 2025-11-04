@@ -1,21 +1,33 @@
 class UTM {
-  double easting;
-  double northing;
-  String zoneLetter;
-  int zoneNumber;
-  int? accuracy;
+  final double easting;
+  final double northing;
+  final String zoneLetter;
+  final int zoneNumber;
+  final int? accuracy;
 
-  UTM(
-      {required double easting,
-      required double northing,
-      required String zoneLetter,
-      required int zoneNumber,
-      int? accuracy})
-      : easting = easting,
-        northing = northing,
-        zoneLetter = zoneLetter,
-        zoneNumber = zoneNumber,
-        accuracy = accuracy;
+  UTM({
+    required this.easting,
+    required this.northing,
+    required this.zoneLetter,
+    required this.zoneNumber,
+    this.accuracy,
+  });
+
+  UTM copyWith({
+    double? easting,
+    double? northing,
+    String? zoneLetter,
+    int? zoneNumber,
+    int? Function()? accuracy,
+  }) {
+    return UTM(
+      easting: easting ?? this.easting,
+      northing: northing ?? this.northing,
+      zoneLetter: zoneLetter ?? this.zoneLetter,
+      zoneNumber: zoneNumber ?? this.zoneNumber,
+      accuracy: accuracy != null ? accuracy() : this.accuracy,
+    );
+  }
 
   @override
   String toString() {

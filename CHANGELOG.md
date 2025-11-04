@@ -1,5 +1,10 @@
 # Changelog
 
+## [3.0.0] - 2025-11-04
+
+* Update minimum Dart version to 3.0.0.
+* Update dependencies.
+
 ## [2.0.0] - 2021-03-23
 
 * Stable null safety release.

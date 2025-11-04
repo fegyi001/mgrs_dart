@@ -1,10 +1,9 @@
 class LonLat {
-  double lon;
-  double lat;
+  final double lon;
+  final double lat;
 
-  LonLat({
-    required double lon,
-    required double lat,
-  })   : lon = lon,
-        lat = lat;
+  const LonLat({
+    required this.lon,
+    required this.lat,
+  });
 }
