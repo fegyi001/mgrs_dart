@@ -1,4 +1,4 @@
-library mgrs_dart;
+library;
 
 export 'package:mgrs_dart/src/classes/bbox.dart';
 export 'package:mgrs_dart/src/classes/lonlat.dart';

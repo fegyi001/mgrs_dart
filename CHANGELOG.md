@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.0.0] - 2025-03-29
+## [3.0.0] - 2025-11-04
 
 * Update minimum Dart version to 3.0.0.
 * Update dependencies.

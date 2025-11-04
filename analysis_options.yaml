@@ -3,6 +3,10 @@
 # see https://github.com/dart-lang/pedantic#enabled-lints.
 include: package:flutter_lints/flutter.yaml
 
+formatter:
+  page_width: 80
+  trailing_commas: preserve
+
 # For lint rules and documentation, see http://dart-lang.github.io/linter/lints.
 # Uncomment to specify additional rules.
 # linter:
@@ -12,3 +16,8 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
 #   exclude:
 #     - path/to/excluded/files/**
+
+linter:
+  rules:
+    constant_identifier_names: false
+    non_constant_identifier_names: false

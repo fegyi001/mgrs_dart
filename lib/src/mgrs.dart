@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:mgrs_dart/src/classes/bbox.dart';
 import 'package:mgrs_dart/src/classes/lonlat.dart';
 import 'package:mgrs_dart/src/classes/utm.dart';
@@ -11,9 +12,9 @@ class Mgrs {
   ///
   /// {int} @private
   ///
-  static final NUM_100K_SETS = 6;
+  static const NUM_100K_SETS = 6;
 
-  static final ALPHABET = [
+  static const ALPHABET = [
     'a',
     'b',
     'c',
@@ -44,18 +45,18 @@ class Mgrs {
 
   //The column letters (for easting) of the lower left value, per
   //set.
-  static final SET_ORIGIN_COLUMN_LETTERS = 'AJSAJS';
+  static const SET_ORIGIN_COLUMN_LETTERS = 'AJSAJS';
 
   // The row letters (for northing) of the lower left value, per
   // set.
   // {string} @private
-  static final SET_ORIGIN_ROW_LETTERS = 'AFAFAF';
+  static const SET_ORIGIN_ROW_LETTERS = 'AFAFAF';
 
-  static final A = 65; // A
-  static final I = 73; // I
-  static final O = 79; // O
-  static final V = 86; // V
-  static final Z = 90; // Z
+  static const A = 65; // A
+  static const I = 73; // I
+  static const O = 79; // O
+  static const V = 86; // V
+  static const Z = 90; // Z
 
   ///
   /// Convert MGRS to lat/lon bounding box.
@@ -84,8 +85,8 @@ class Mgrs {
     if (mgrs == '') {
       throw Exception('toPoint received a blank string');
     }
-    var utm = decode(mgrs.toUpperCase());
-    utm.accuracy = null;
+    var utm = decode(mgrs.toUpperCase()).copyWith(accuracy: () => null);
+
     var bbox = UTMtoLL(utm);
     if (bbox is LonLat) {
       return [bbox.lon, bbox.lat];
@@ -539,7 +540,7 @@ class Mgrs {
     //remove any spaces in MGRS String
     mgrsString = mgrsString.replaceAll(' ', '');
     var length = mgrsString.length;
-    var hunK;
+    String hunK;
     var sb = '';
     var i = 0;
     // get Zone number
